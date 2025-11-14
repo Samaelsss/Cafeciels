@@ -1,0 +1,62 @@
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-in {
+    animation: fadeInUp 0.6s ease forwards;
+    opacity: 0;
+}
+
+.delay-1 {
+    animation-delay: 0.1s;
+}
+
+.delay-2 {
+    animation-delay: 0.2s;
+}
+
+.delay-3 {
+    animation-delay: 0.3s;
+}
+
+.delay-4 {
+    animation-delay: 0.4s;
+}
+
+/* Animation for table rows */
+.table-row-animate {
+    opacity: 0;
+}
+
+/* Animation for cards in dashboard */
+.card-animate {
+    opacity: 0;
+}
+
+/* Shared animation script */
+document.addEventListener('DOMContentLoaded', function() {
+    // Animate table rows
+    const tableRows = document.querySelectorAll('tbody tr');
+    tableRows.forEach((row, index) => {
+        row.style.animation = 'none';
+        row.style.opacity = '0';
+        
+        setTimeout(() => {
+            row.style.animation = `fadeInUp 0.6s ease forwards ${0.4 + (index * 0.1)}s`;
+        }, 0);
+    });
+
+    // Animate dashboard cards
+    const cards = document.querySelectorAll('.card-animate');
+    cards.forEach((card, index) => {
+        card.style.animation = `fadeInUp 0.6s ease forwards ${0.2 + (index * 0.1)}s`;
+    });
+});
